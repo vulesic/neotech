@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Formik, Form, Field, ErrorMessage, FieldProps, FormikTouched, FormikErrors } from "formik";
+import { Formik, Form, Field, FieldProps, FormikTouched, FormikErrors } from "formik";
 import * as Yup from "yup";
 import { FormikHelpers } from "formik";
 import TextField from "@mui/material/TextField";
@@ -45,12 +45,10 @@ const CreateEmployee = ({ open, handleClose, handleCreate, handleUpdate, employe
   });
 
   const handleSubmit = async (values: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
-    console.log("values :>> ", values);
     if (isCreating) {
       handleCreate(values);
       //resetForm();
     } else {
-      console.log("updejtuje sa vrednostima: >>>", values);
       handleUpdate(values);
       //resetForm()
     }
@@ -75,7 +73,6 @@ const CreateEmployee = ({ open, handleClose, handleCreate, handleUpdate, employe
       <DialogTitle>{`${isCreating ? "Create" : "Update"}  Employee`}</DialogTitle>
       <DialogContent>
         <Formik initialValues={initialEmployeeValues} validationSchema={validationSchema} enableReinitialize onSubmit={handleSubmit}>
-        {/* <Formik initialValues={initialEmployeeValues} enableReinitialize={true} onSubmit={handleSubmit}> */}
           <Form style={formStyle}>
             <Stack width={300} direction="column" justifyContent="flex-start" alignItems="flex-start" spacing={2}>
               <Box sx={{ width: "100%" }}>
@@ -85,7 +82,6 @@ const CreateEmployee = ({ open, handleClose, handleCreate, handleUpdate, employe
                       size="small"
                       {...field}
                       id="name"
-                      // value={initialEmployeeValues.name || ''}
                       label="Name"
                       variant="outlined"
                       fullWidth
@@ -103,7 +99,6 @@ const CreateEmployee = ({ open, handleClose, handleCreate, handleUpdate, employe
                       size="small"
                       {...field}
                       id="email"
-                      // value={initialEmployeeValues.email || ''}
                       label="Email"
                       variant="outlined"
                       fullWidth
@@ -121,7 +116,6 @@ const CreateEmployee = ({ open, handleClose, handleCreate, handleUpdate, employe
                       size="small"
                       {...field}
                       id="phoneNumber"
-                      // value={initialEmployeeValues.phoneNumber || ''}
                       label="Phone Number"
                       variant="outlined"
                       fullWidth
@@ -145,7 +139,6 @@ const CreateEmployee = ({ open, handleClose, handleCreate, handleUpdate, employe
                         size="small"
                         {...field}
                         id="homeAddress.city"
-                        // value={initialEmployeeValues.homeAddress.city || ''}
                         label="City"
                         variant="outlined"
                         fullWidth
@@ -168,7 +161,6 @@ const CreateEmployee = ({ open, handleClose, handleCreate, handleUpdate, employe
                         size="small"
                         {...field}
                         id="homeAddress.ZIPCode"
-                        // value={initialEmployeeValues.homeAddress.ZIPCode || ''}
                         label="ZIP Code"
                         variant="outlined"
                         fullWidth
@@ -195,7 +187,6 @@ const CreateEmployee = ({ open, handleClose, handleCreate, handleUpdate, employe
                         size="small"
                         {...field}
                         id="homeAddress.addressLine1"
-                        // value={initialEmployeeValues.homeAddress.addressLine1 || ''}
                         label="Address Line1"
                         variant="outlined"
                         fullWidth
@@ -226,7 +217,6 @@ const CreateEmployee = ({ open, handleClose, handleCreate, handleUpdate, employe
                         size="small"
                         {...field}
                         id="homeAddress.addressLine2"
-                        // value={initialEmployeeValues.homeAddress.addressLine2 || ''}
                         label="Address Line2"
                         variant="outlined"
                         fullWidth
@@ -247,47 +237,12 @@ const CreateEmployee = ({ open, handleClose, handleCreate, handleUpdate, employe
                   {({ field, form }: FieldProps) => (
                     <DatePicker
                       {...field}
-                      // id="dateOfEmployment"
                       label="Date Of Employment"
-                      // inputFormat="MM/DD/YYYY"
                       value={dayjs(field.value)}
                       onChange={(newValue: any) => form.setFieldValue("dateOfEmployment", newValue)}
-                      // renderInput={(params: any) => (
-                      //   <TextField
-                      //     {...params}
-                      //     size="small"
-                      //     variant="outlined"
-                      //     fullWidth
-                      //     error={!!(form.touched.dateOfEmployment && form.errors.dateOfEmployment)}
-                      //     helperText={
-                      //       form.touched.dateOfEmployment && form.errors.dateOfEmployment
-                      //         ? String(form.errors.dateOfEmployment)
-                      //         : ""
-                      //     }
-                      //   />
-                      // )}
                     />
                   )}
                 </Field>
-                {/* <Field name="dateOfEmployment">
-                    {({ field, form }: FieldProps) => (
-                      <TextField
-                        size="small"
-                        {...field}
-                        id="dateOfEmployment"
-                        // value={initialEmployeeValues.dateOfEmployment || ''}
-                        label="Date Of Employment"
-                        variant="outlined"
-                        fullWidth
-                        error={!!(form.touched.dateOfEmployment && form.errors.dateOfEmployment)}
-                        helperText={
-                          form.touched.dateOfEmployment && form.errors.dateOfEmployment
-                            ? String(form.errors.dateOfEmployment)
-                            : ""
-                        }
-                      />
-                    )}
-                  </Field> */}
               </Box>
 
               <Box sx={{ width: "100%" }}>
@@ -295,45 +250,12 @@ const CreateEmployee = ({ open, handleClose, handleCreate, handleUpdate, employe
                   {({ field, form }: FieldProps) => (
                     <DatePicker
                       {...field}
-                      // id="dateOfBirth"
                       label="Date Of Employment"
-                      // inputFormat="MM/DD/YYYY"
                       value={dayjs(field.value)}
                       onChange={(newValue: any) => form.setFieldValue("dateOfBirth", newValue)}
-                      // renderInput={(params: any) => (
-                      //   <TextField
-                      //     {...params}
-                      //     size="small"
-                      //     variant="outlined"
-                      //     fullWidth
-                      //     error={!!(form.touched.dateOfBirth && form.errors.dateOfBirth)}
-                      //     helperText={
-                      //       form.touched.dateOfBirth && form.errors.dateOfBirth
-                      //         ? String(form.errors.dateOfBirth)
-                      //         : ""
-                      //     }
-                      //   />
-                      // )}
                     />
                   )}
                 </Field>
-                {/* <Field name="dateOfBirth">
-                  {({ field, form }: FieldProps) => (
-                    <TextField
-                      size="small"
-                      {...field}
-                      id="dateOfBirth"
-                      // value={initialEmployeeValues.dateOfBirth || ''}
-                      label="Date Of Birth"
-                      variant="outlined"
-                      fullWidth
-                      error={!!(form.touched.dateOfBirth && form.errors.dateOfBirth)}
-                      helperText={
-                        form.touched.dateOfBirth && form.errors.dateOfBirth ? String(form.errors.dateOfBirth) : " "
-                      }
-                    />
-                  )}
-                </Field> */}
               </Box>
             </Stack>
             <Box sx={{ marginBottom: 1, marginTop: 1 }}>

@@ -25,27 +25,21 @@ export const employeesSlice = createSlice({
     },
 
     employeeAddedSuccess: (state, action: PayloadAction<any>) => {
-      console.log("action.payload :>> ", action.payload);
-      // const user = action.payload.user;
       state.employees = [...state.employees, action.payload];
       state.count += 1; 
     },
 
     deleteEmployeeSuccess: (state, action) => {
-      console.log("state, action :>> ", state, action);
       const idToDelete = action.payload._id;
       state.employees = state.employees.filter((employee) => employee._id !== idToDelete);
       state.count -= 1;
-      console.log('state.deletedEmployees :>> ', state.deletedEmployees);
       state.deletedEmployees = [...state.deletedEmployees, action.payload];
       state.deletedCount += 1; 
     },
 
     updateEmployeeSuccess: (state, action) => {
-      console.log("state, action :>> ", state, action);
       const updatedEmployee = action.payload;
       const indexToUpdate = state.employees.findIndex((employee) => employee._id === updatedEmployee._id);
-
       if (indexToUpdate !== -1) {
         state.employees[indexToUpdate] = { ...state.employees[indexToUpdate], ...updatedEmployee };
       }

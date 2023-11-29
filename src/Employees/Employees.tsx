@@ -1,6 +1,6 @@
 import EmployeesList from "./EmployeesList";
 import DeletedEmployeesList from "./DeletedEmployeesList";
-import { Box, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Tab, Typography } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import React, { useState } from "react";
 

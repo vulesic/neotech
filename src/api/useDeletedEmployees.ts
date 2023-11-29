@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 
 const useFetchDeletedEmployees = () => {
   const dispatch = useDispatch();
-  // const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -13,7 +12,6 @@ const useFetchDeletedEmployees = () => {
     setLoading(true);
     try {
       const response = await axios.get(`http://142.132.229.249:3000/employees/deleted?page=${page}&limit=6`);
-      // setData(response.data);
       dispatch(fetchDeletedEmployees(response.data))
     } catch (error: unknown) {
       if (error instanceof Error) {
@@ -26,7 +24,7 @@ const useFetchDeletedEmployees = () => {
   };
 
   useEffect(() => {
-    fetchDeletedData(1); // Fetch data for the initial page when the component mounts
+    fetchDeletedData(1);
   }, []);
 
   return { loading, error, fetchDeletedData };

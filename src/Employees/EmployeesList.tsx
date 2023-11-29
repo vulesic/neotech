@@ -63,7 +63,6 @@ const EmployeesList = () => {
   };
 
   const handleCreateEmployee = (emp: EmployeeIC) => {
-    console.log("emp :>> ", emp);
     addEmployee(emp);
     setOpenUpdateDialog(false);
   };
@@ -83,7 +82,6 @@ const EmployeesList = () => {
   };
 
   useEffect(() => {
-    console.log("employeesState, employees :>> ", employeesState, employees);
     setEmployees(employeesState);
   }, [employeesState]);
 

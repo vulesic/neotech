@@ -1,23 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { EmployeeIC, EmployeesIC } from "../lib/interfaces";
+import { EmployeeIC } from "../lib/interfaces";
 import { selectDeletedEmployees, selectDeletedCount } from "../store/employeesSlice";
 import { useSelector } from "react-redux";
 import Pagination from "../Pagination";
 import useFetchDeletedEmployees from "../api/useDeletedEmployees";
 import {
   Box,
-  Divider,
   Grid,
-  IconButton,
   List,
   ListItem,
-  ListItemSecondaryAction,
   ListItemText,
-  Stack,
   Typography,
 } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import DeleteConfirmationDialog from "./DeleteConfirmationDialog";
 
 const DeletedEmployeesList = () => {
   const employeesState = useSelector(selectDeletedEmployees);
@@ -25,7 +18,6 @@ const DeletedEmployeesList = () => {
   const { fetchDeletedData } = useFetchDeletedEmployees();
 
   const handlePaginationClick = (page: number) => {
-    console.log("page :>> ", page);
     fetchDeletedData(page);
   };
 
@@ -34,7 +26,6 @@ const DeletedEmployeesList = () => {
       <Typography variant="h5">Deleted Employees List</Typography>
       {employeesState && (
         <List>
-          {/* Titles for Columns */}
           <ListItem>
             <Grid container spacing={0}>
               <Grid item xs={3}>

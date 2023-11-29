@@ -11,13 +11,11 @@ const useUpdateEmployee = () => {
 
   const updateEmployee = async (employee: EmployeeIC) => {
     setLoading(true);
-    console.log('employee :>> ', employee);
     const { _id } = employee;
     if (_id) {
       const url = `http://142.132.229.249:3000/employees/${_id}`;
       try {
         const response = await axios.patch(url, employee);
-        console.log("response :>> ", response);
         dispatch(updateEmployeeSuccess(response.data))
       } catch (error: unknown) {
         if (error instanceof Error) {
